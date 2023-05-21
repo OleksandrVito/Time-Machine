@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.TimeCalculator" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/purple_700</item>
+        <!--        <item name="android:colorAccent">@color/grey</item>-->
+    </style>
+
+
+    <style name="MyDatePickerDialogTheme" parent="android:Theme.Material.Light.Dialog">
+        If you want you can override only colorAccent
+        <item name="android:colorAccent">@color/grey</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:windowBackground">@color/light</item>
+        <item name="android:textColorPrimary">@color/grey</item>
+        <item name="android:textColorSecondary">@color/grey</item>
+    </style>
+
+    <style name="MyDatePickerDialogDarkTheme" parent="android:Theme.Material.Dialog">
+        If you want you can override only colorAccent
+        <item name="android:colorAccent">@color/grey</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:windowBackground">@color/dark</item>
+        <item name="android:textColorPrimary">@color/grey</item>
+        <item name="android:textColorSecondary">@color/grey</item>
+    </style>
+
+</resources>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Time Machine</string>
+<!--    <string name="main_banner">ca-app-pub-1869740172940843/3006067904</string>-->
+<!--    <string name="main_banner">ca-app-pub-1869740172940843/8835666008</string>-->
+<!--    <string name="main_banner">ca-app-pub-1869740172940843/6375301421</string>-->
+<!--    <string name="main_banner">ca-app-pub-1869740172940843/1147897611</string>-->
+    <string name="main_banner">ca-app-pub-3940256099942544/6300978111</string>
+</resources>
