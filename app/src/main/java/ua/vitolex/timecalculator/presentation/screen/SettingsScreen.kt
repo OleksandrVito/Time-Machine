@@ -64,23 +64,25 @@ fun SettingsScreen(
     val kc = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
 
+    val title = stringResource(R.string.Time_machine)
+
     BackHandler(enabled = true, onBack = {
-        onEvent(DrawerEvents.OnItemClick("Time Machine"))
+        onEvent(DrawerEvents.OnItemClick(title))
         navController.navigate(Screens.MainScreen.rout) { navController.popBackStack() }
     })
 
     val themeItems = listOf(
         RadioButtonItem(
             id = AppTheme.MODE_DAY.ordinal,
-            title = "Light theme",
+            title = stringResource(R.string.Light_theme),
         ),
         RadioButtonItem(
             id = AppTheme.MODE_NIGHT.ordinal,
-            title = "Dark theme",
+            title = stringResource(R.string.Dark_theme),
         ),
         RadioButtonItem(
             id = AppTheme.MODE_AUTO.ordinal,
-            title = "Auto theme",
+            title = stringResource(R.string.Auto_theme),
         ),
     )
 
@@ -106,7 +108,7 @@ fun SettingsScreen(
                        horizontalArrangement = Arrangement.SpaceBetween
                    ) {
                        Text(
-                           text = "Days in a month:", fontSize = 20.scaledSp(),
+                           text = stringResource(R.string.Days_in_a_month), fontSize = 20.scaledSp(),
                            textAlign = TextAlign.Center,
                            modifier = Modifier
                                .padding(top = 35.dp)
@@ -145,7 +147,7 @@ fun SettingsScreen(
                            ),
                        )
                    }
-                   Text(text = "By default, it is 30.42 days",modifier = Modifier
+                   Text(text = stringResource(R.string.By_default_days),modifier = Modifier
                        .fillMaxWidth(),
                        textAlign = TextAlign.Center, fontSize = 16.scaledSp())
                }
@@ -163,7 +165,7 @@ fun SettingsScreen(
                        horizontalArrangement = Arrangement.SpaceBetween
                    ) {
                        Text(
-                           text = "Days in a year:", fontSize = 20.scaledSp(),
+                           text = stringResource(R.string.Days_in_a_year), fontSize = 20.scaledSp(),
                            textAlign = TextAlign.Center,
                            modifier = Modifier
                                .padding(top = 35.dp)
@@ -203,7 +205,7 @@ fun SettingsScreen(
                        )
                    }
                    Text(
-                       text = "By default, it is 365,25 days",
+                       text = stringResource(R.string.By_default_days_in_year),
                        modifier = Modifier
                            .fillMaxWidth(),
                        textAlign = TextAlign.Center,fontSize = 16.scaledSp()
@@ -216,7 +218,7 @@ fun SettingsScreen(
                    horizontalAlignment = Alignment.Start,
                ) {
                    Text(
-                       text = "Choose your theme",
+                       text = stringResource(R.string.Choose_your_theme),
                        fontSize = 20.scaledSp(),
                        textAlign = TextAlign.Start,
                        modifier = Modifier
@@ -232,7 +234,7 @@ fun SettingsScreen(
                }
            }
         }
-        BannerAdView(id = stringResource(id = R.string.main_banner))
+        BannerAdView(id = stringResource(id = R.string.main_banner2))
     }
 }
 

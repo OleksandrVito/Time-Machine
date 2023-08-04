@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Time_machine">Time Machine</string>
+    <string name="Light_theme">Світла тема</string>
+    <string name="Dark_theme">Темна тема</string>
+    <string name="Auto_theme">Авто тема</string>
+    <string name="Days_in_a_month">Днів у місяці:</string>
+    <string name="By_default_days">По замовчуванню 30.42 дня</string>
+    <string name="Days_in_a_year">Днів у році:</string>
+    <string name="By_default_days_in_year">По замовчуванню 365,25 дня</string>
+    <string name="Choose_your_theme">Виберіть свою тему</string>
+    <string name="NOW">ЗАРАЗ</string>
+    <string name="DIFFERENCE">РІЗНИЦЯ</string>
+    <string name="Years">Роки</string>
+    <string name="Months">Місяці</string>
+    <string name="Weeks">Тижні</string>
+    <string name="Days">Дні</string>
+    <string name="Hours">Години</string>
+    <string name="Minutes">Хвилини</string>
+    <string name="hours">годин</string>
+    <string name="years">років</string>
+    <string name="months">місяців</string>
+    <string name="days">днів</string>
+    <string name="minutes">хвилин</string>
+    <string name="seconds">секунд</string>
+    <string name="TO">ДО:</string>
+    <string name="FROM">З:</string>
+    <string name="Home">Домашня</string>
+    <string name="Time_difference">Різниця у часі</string>
+    <string name="Add_or_sub_time">Додати або відняти час</string>
+    <string name="Settings">Налаштування</string>
+</resources>

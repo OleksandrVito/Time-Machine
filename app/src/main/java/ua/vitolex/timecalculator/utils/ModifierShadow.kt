@@ -16,13 +16,14 @@ fun Modifier.shadow(
     color: Color = Color.Black,
     offsetX: Dp = 0.dp,
     offsetY: Dp = 0.dp,
-    blurRadius: Dp = 0.dp
+    blurRadius: Dp = 0.dp,
 ) = drawBehind {
     drawIntoCanvas { canvas ->
         val paint = Paint()
         val frameworkPaint = paint.asFrameworkPaint()
         if (blurRadius != 0.dp) {
-            frameworkPaint.maskFilter = (BlurMaskFilter(blurRadius.toPx(), BlurMaskFilter.Blur.NORMAL))
+            frameworkPaint.maskFilter =
+                (BlurMaskFilter(blurRadius.toPx(), BlurMaskFilter.Blur.NORMAL))
         }
         frameworkPaint.color = color.toArgb()
 
@@ -47,20 +48,24 @@ fun Modifier.circleShadow(
     offsetX: Dp = 0.dp,
     offsetY: Dp = 0.dp,
     blurRadius: Dp = 0.dp,
-    radius: Float
+    radius: Float = 0f,
 ) = drawBehind {
     drawIntoCanvas { canvas ->
         val paint = Paint()
         val frameworkPaint = paint.asFrameworkPaint()
         if (blurRadius != 0.dp) {
-            frameworkPaint.maskFilter = (BlurMaskFilter(blurRadius.toPx(), BlurMaskFilter.Blur.NORMAL))
+            frameworkPaint.maskFilter =
+                (BlurMaskFilter(blurRadius.toPx(), BlurMaskFilter.Blur.NORMAL))
         }
         frameworkPaint.color = color.toArgb()
 
         canvas.drawCircle(
-            radius = radius,
-            center = Offset(x = this.size.width / 2f + offsetX.toPx(), y = this.size.height / 2f + offsetY.toPx()),
-            paint = paint
+            radius = if (radius == 0f) this.size.width / 2f + 10 else radius,
+        center = Offset(
+            x = this.size.width / 2f + offsetX.toPx(),
+            y = this.size.height / 2f + offsetY.toPx()
+        ),
+        paint = paint
         )
 
     }
@@ -70,13 +75,14 @@ fun Modifier.shadowAround(
     color: Color = Color.Black,
     offsetX: Dp = 0.dp,
     offsetY: Dp = 0.dp,
-    blurRadius: Dp = 0.dp
+    blurRadius: Dp = 0.dp,
 ) = drawBehind {
     drawIntoCanvas { canvas ->
         val paint = Paint()
         val frameworkPaint = paint.asFrameworkPaint()
         if (blurRadius != 0.dp) {
-            frameworkPaint.maskFilter = (BlurMaskFilter(blurRadius.toPx(), BlurMaskFilter.Blur.NORMAL))
+            frameworkPaint.maskFilter =
+                (BlurMaskFilter(blurRadius.toPx(), BlurMaskFilter.Blur.NORMAL))
         }
         frameworkPaint.color = color.toArgb()
 

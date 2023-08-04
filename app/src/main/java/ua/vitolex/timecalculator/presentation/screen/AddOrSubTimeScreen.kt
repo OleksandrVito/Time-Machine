@@ -212,8 +212,10 @@ fun AddOrSubTimeScreen(
     val kc = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
 
+    val title = stringResource(R.string.Time_machine)
+
     BackHandler(enabled = true, onBack = {
-        onEvent(DrawerEvents.OnItemClick("Time Machine"))
+        onEvent(DrawerEvents.OnItemClick(title))
         navController.navigate(Screens.MainScreen.rout) { navController.popBackStack() }
     })
 
@@ -320,7 +322,7 @@ fun AddOrSubTimeScreen(
                         .padding(vertical = 18.dp, horizontal = 8.dp),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text(text = "NOW", fontSize = 16.scaledSp(), color = GreyTextColor)
+                        Text(text = stringResource(R.string.NOW), fontSize = 16.scaledSp(), color = GreyTextColor)
                     }
                 }
             }
@@ -337,14 +339,14 @@ fun AddOrSubTimeScreen(
                             offsetX = (-5).dp,
                             offsetY = (-5).dp,
                             blurRadius = 10.dp,
-                            radius = 80f
+                            radius = 0f
                         )
                         .circleShadow(
                             color = MaterialTheme.colors.onSecondary,
                             offsetX = (5).dp,
                             offsetY = (5).dp,
                             blurRadius = 10.dp,
-                            radius = 80f
+                            radius = 0f
                         )
                         .clip(RoundedCornerShape(50.dp))
                         .background(MaterialTheme.colors.primary)
@@ -379,14 +381,14 @@ fun AddOrSubTimeScreen(
                             offsetX = (-5).dp,
                             offsetY = (-5).dp,
                             blurRadius = 10.dp,
-                            radius = 80f
+                            radius = 0f
                         )
                         .circleShadow(
                             color = MaterialTheme.colors.onSecondary,
                             offsetX = (5).dp,
                             offsetY = (5).dp,
                             blurRadius = 10.dp,
-                            radius = 80f
+                            radius = 0f
                         )
                         .clip(RoundedCornerShape(50.dp))
                         .background(MaterialTheme.colors.primary)
@@ -483,7 +485,7 @@ fun AddOrSubTimeScreen(
                                     ),
                                 )
                             }
-                            Text(text = "Years", fontSize = 20.scaledSp())
+                            Text(text = stringResource(R.string.Years), fontSize = 20.scaledSp())
 
                         }
                         Box(
@@ -500,7 +502,7 @@ fun AddOrSubTimeScreen(
                                     onValueChange = {
                                         try {
                                             it.toDouble()
-                                            if (it.length < 4) {
+                                            if (it.length < 5) {
                                                 monthsInputValue = it
                                             }
                                             getDifference(
@@ -513,7 +515,7 @@ fun AddOrSubTimeScreen(
                                                 minutesInputValue,
                                             )
                                         } catch (e: NumberFormatException) {
-                                            if (it.length < 4) {
+                                            if (it.length < 5) {
                                                 monthsInputValue = it
                                             }
                                             getDifference(
@@ -542,7 +544,7 @@ fun AddOrSubTimeScreen(
                                     ),
                                 )
                             }
-                            Text(text = "Months", fontSize = 20.scaledSp())
+                            Text(text = stringResource(R.string.Months), fontSize = 20.scaledSp())
                         }
                         Box(
                             modifier = Modifier.height(120.dp),
@@ -558,7 +560,7 @@ fun AddOrSubTimeScreen(
                                     onValueChange = {
                                         try {
                                             it.toDouble()
-                                            if (it.length < 4) {
+                                            if (it.length < 5) {
                                                 weeksInputValue = it
                                             }
                                             getDifference(
@@ -571,7 +573,7 @@ fun AddOrSubTimeScreen(
                                                 minutesInputValue,
                                             )
                                         } catch (e: NumberFormatException) {
-                                            if (it.length < 4) {
+                                            if (it.length < 5) {
                                                 weeksInputValue = it
                                             }
                                             getDifference(
@@ -600,7 +602,7 @@ fun AddOrSubTimeScreen(
                                     ),
                                 )
                             }
-                            Text(text = "Weeks", fontSize = 20.scaledSp())
+                            Text(text = stringResource(R.string.Weeks), fontSize = 20.scaledSp())
                         }
                     }
                     Spacer(modifier = Modifier.width(10.dp))
@@ -619,7 +621,7 @@ fun AddOrSubTimeScreen(
                                     onValueChange = {
                                         try {
                                             it.toDouble()
-                                            if (it.length < 4) {
+                                            if (it.length < 7) {
                                                 daysInputValue = it
                                             }
                                             getDifference(
@@ -632,7 +634,7 @@ fun AddOrSubTimeScreen(
                                                 minutesInputValue,
                                             )
                                         } catch (e: NumberFormatException) {
-                                            if (it.length < 4) {
+                                            if (it.length < 7) {
                                                 daysInputValue = it
                                             }
                                             getDifference(
@@ -661,7 +663,7 @@ fun AddOrSubTimeScreen(
                                     ),
                                 )
                             }
-                            Text(text = "Days", fontSize = 20.scaledSp())
+                            Text(text = stringResource(R.string.Days), fontSize = 20.scaledSp())
                         }
                         Box(
                             modifier = Modifier.height(120.dp),
@@ -677,7 +679,7 @@ fun AddOrSubTimeScreen(
                                     onValueChange = {
                                         try {
                                             it.toDouble()
-                                            if (it.length < 4) {
+                                            if (it.length < 7) {
                                                 hoursInputValue = it
                                             }
                                             getDifference(
@@ -690,7 +692,7 @@ fun AddOrSubTimeScreen(
                                                 minutesInputValue,
                                             )
                                         } catch (e: NumberFormatException) {
-                                            if (it.length < 4) {
+                                            if (it.length < 7) {
                                                 hoursInputValue = it
                                             }
                                             getDifference(
@@ -719,7 +721,7 @@ fun AddOrSubTimeScreen(
                                     ),
                                 )
                             }
-                            Text(text = "Hours", fontSize = 20.scaledSp())
+                            Text(text = stringResource(R.string.Hours), fontSize = 20.scaledSp())
                         }
                         Box(
                             modifier = Modifier.height(120.dp),
@@ -735,7 +737,7 @@ fun AddOrSubTimeScreen(
                                     onValueChange = {
                                         try {
                                             it.toDouble()
-                                            if (it.length < 4) {
+                                            if (it.length < 7) {
                                                 minutesInputValue = it
                                             }
                                             getDifference(
@@ -748,7 +750,7 @@ fun AddOrSubTimeScreen(
                                                 minutesInputValue,
                                             )
                                         } catch (e: NumberFormatException) {
-                                            if (it.length < 4) {
+                                            if (it.length < 7) {
                                                 minutesInputValue = it
                                             }
                                             getDifference(
@@ -777,7 +779,7 @@ fun AddOrSubTimeScreen(
                                     ),
                                 )
                             }
-                            Text(text = "Minutes", fontSize = 20.scaledSp())
+                            Text(text = stringResource(R.string.Minutes), fontSize = 20.scaledSp())
                         }
                     }
                 }
@@ -795,7 +797,7 @@ fun AddOrSubTimeScreen(
                 )
             }
         }
-        BannerAdView(id = stringResource(id = R.string.main_banner))
+        BannerAdView(id = stringResource(id = R.string.main_banner4))
     }
 }
 

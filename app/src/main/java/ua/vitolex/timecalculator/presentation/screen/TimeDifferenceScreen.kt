@@ -170,15 +170,17 @@ fun TimeDifferenceScreen(
     )
 
 
-    val seconds: Float = (timeDifference / 1000f * 100).toInt() / 100f
-    val minutes: Float = (seconds / 60f * 100).toInt() / 100f
-    val hours: Float = (minutes / 60f * 100).toInt() / 100f
-    val days: Float = (hours / 24f * 100).toInt() / 100f
-    val months: Float = (days / settings.days.toFloat() * 100).toInt() / 100f
-    val years: Float = (months / 12 * 100).toInt() / 100f
+    val seconds: Long = (timeDifference / 1000L)
+    val minutes: Long = (timeDifference / 1000L / 60L)
+    val hours: Long = (timeDifference / 1000L / 60L / 60L)
+    val days: Long = (timeDifference / 1000L / 60L / 60L / 24L * 100).toInt() / 100L
+    val months: Float = (timeDifference / 1000L / 60L / 60L / 24L / settings.days.toFloat() * 100).toInt() / 100F
+    val years: Float = (months / 12 * 100).toInt() / 100F
+
+    val title = stringResource(R.string.Time_machine)
 
     BackHandler(enabled = true, onBack = {
-        onEvent(DrawerEvents.OnItemClick("Time Machine"))
+        onEvent(DrawerEvents.OnItemClick(title))
         navController.navigate(Screens.MainScreen.rout) { navController.popBackStack() }
     })
 
@@ -186,10 +188,14 @@ fun TimeDifferenceScreen(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        LazyColumn( modifier = Modifier.fillMaxSize().weight(1f).padding(10.dp).padding(top = 10.dp),
+        LazyColumn( modifier = Modifier
+            .fillMaxSize()
+            .weight(1f)
+            .padding(10.dp)
+            .padding(top = 10.dp),
         ) {
             item {   Spacer(modifier = Modifier.height(10.dp))
-                Text(text = "FROM:", modifier = Modifier.padding(start = 20.dp), fontSize = 18.scaledSp())
+                Text(text = stringResource(R.string.FROM), modifier = Modifier.padding(start = 20.dp), fontSize = 18.scaledSp())
                 Spacer(modifier = Modifier.height(10.dp))
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
                     Box(modifier = Modifier
@@ -265,11 +271,15 @@ fun TimeDifferenceScreen(
                         }
                         .padding(vertical = 18.dp, horizontal = 8.dp),contentAlignment = Alignment.Center
                     ) {
-                        Text(text = "NOW",  fontSize = 16.scaledSp(), color = GreyTextColor,)
+                        Text(
+                            text = stringResource(id = R.string.NOW),
+                            fontSize = 16.scaledSp(),
+                            color = GreyTextColor
+                        )
                     }
                 } }
             item {  Spacer(modifier = Modifier.height(20.dp))
-                Text(text = "TO:", modifier = Modifier.padding(start = 20.dp), fontSize = 18.scaledSp(),)
+                Text(text = stringResource(R.string.TO), modifier = Modifier.padding(start = 20.dp), fontSize = 18.scaledSp(),)
                 Spacer(modifier = Modifier.height(10.dp))
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
                     Box(modifier = Modifier
@@ -345,18 +355,19 @@ fun TimeDifferenceScreen(
                         }
                         .padding(vertical = 18.dp, horizontal = 8.dp),contentAlignment = Alignment.Center
                     ) {
-                        Text(text = "NOW", fontSize = 16.scaledSp(), color = GreyTextColor)
+                        Text(text = stringResource(id = R.string.NOW), fontSize = 16.scaledSp(), color = GreyTextColor)
                     }
                 } }
             item {  Spacer(modifier = Modifier.height(30.dp))
                 Row() {
                     Text(
-                        text = "DIFFERENCE:\n $hours hours" +
-                                "\n= $years years" +
-                                "\n= $months months" +
-                                "\n= $days days " +
-                                "\n= $minutes minutes " +
-                                "\n= $seconds seconds",
+                        text = stringResource(id = R.string.DIFFERENCE) +
+                                " :\n $hours " + stringResource(R.string.hours) +
+                                "\n= $years " + stringResource(R.string.years) +
+                                "\n= $months " + stringResource(R.string.months) +
+                                "\n= $days " + stringResource(R.string.days) +
+                                "\n= $minutes " + stringResource(R.string.minutes) +
+                                "\n= $seconds " + stringResource(R.string.seconds),
                         maxLines = if (visibleDifference) 8 else 2,
                         overflow = TextOverflow.Clip,
                         lineHeight = 32.scaledSp(),
@@ -376,6 +387,6 @@ fun TimeDifferenceScreen(
                     }
                 } }
         }
-        BannerAdView(id = stringResource(id = R.string.main_banner))
+        BannerAdView(id = stringResource(id = R.string.main_banner3))
     }
 }

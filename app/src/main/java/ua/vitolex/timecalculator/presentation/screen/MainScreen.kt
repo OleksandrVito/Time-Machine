@@ -74,8 +74,8 @@ fun MainScreen(navController: NavHostController) {
                             blurRadius = 10.dp,
                             radius = 335f
                         )
-                        .height(270.dp)
-                        .width(270.dp), contentAlignment = Alignment.Center
+                        .height(370.dp)
+                        .width(370.dp), contentAlignment = Alignment.Center
                 ) {
                     Clock(
                         modifier = Modifier.fillMaxWidth(),
@@ -101,6 +101,6 @@ fun MainScreen(navController: NavHostController) {
                 )
             }
         }
-        BannerAdView(id = stringResource(id = R.string.main_banner))
+        BannerAdView(id = stringResource(id = R.string.main_banner1))
     }
 }

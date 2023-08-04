@@ -103,19 +103,19 @@ class MainActivity : ComponentActivity() {
                         DrawerBody(
                             items = listOf(
                                 MenuItem(
-                                    title = "Home",
+                                    title = getString(R.string.Home),
                                     route = Screens.MainScreen.rout
                                 ),
                                 MenuItem(
-                                    title = "Time difference",
+                                    title = getString(R.string.Time_difference),
                                     route = Screens.TimeDifference.rout
                                 ),
                                 MenuItem(
-                                    title = "Add or sub time",
+                                    title = getString(R.string.Add_or_sub_time),
                                     route = Screens.AddOrSubTimeScreen.rout
                                 ),
                                 MenuItem(
-                                    title = "Settings",
+                                    title = getString(R.string.Settings),
                                     route = Screens.SettingsScreen.rout
                                 ),
                             ),
@@ -163,6 +163,6 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-//        MobileAds.initialize(this)
+        MobileAds.initialize(this)
     }
 }

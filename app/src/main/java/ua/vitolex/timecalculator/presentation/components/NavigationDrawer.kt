@@ -69,8 +69,8 @@ fun DrawerHeader() {
                     blurRadius = 10.dp,
                     radius = 215f
                 )
-                .height(200.dp)
-                .width(200.dp), contentAlignment = Alignment.Center
+                .height(250.dp)
+                .width(250.dp), contentAlignment = Alignment.Center
         ) {
             Clock(
                 modifier = Modifier.fillMaxWidth(),

@@ -13,11 +13,16 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
@@ -40,6 +45,10 @@ fun CustomInput(
     keyboardOptions: KeyboardOptions? = null,
     keyboardActions: KeyboardActions? = null,
 ) {
+    var focus by remember {
+        mutableStateOf(false)
+    }
+
     Box(
         Modifier
             .border(22.dp, MaterialTheme.colors.primary, shape = RoundedCornerShape(34.dp))
@@ -90,7 +99,10 @@ fun CustomInput(
                     .background(MaterialTheme.colors.primary)
                     .height(35.dp)
                     .fillMaxWidth()
-                    .padding(top = 8.dp, start = 5.dp, end = 5.dp),
+                    .padding(top = 8.dp, start = 5.dp, end = 5.dp)
+                    .onFocusChanged { focusState ->
+                        if (focusState.isFocused) focus = true else focus = false
+                    },
                 keyboardOptions = keyboardOptions ?: KeyboardOptions(
                     keyboardType = KeyboardType.Text,
                     autoCorrect = true,
@@ -100,7 +112,7 @@ fun CustomInput(
                 ),
                 decorationBox = { innerTextField ->
                     Box() {
-                        if (value.isEmpty()) {
+                        if (value.isEmpty() && focus == false) {
                             Text(
                                 text = "0", color = GreyTextColor.copy(0.5f),
                                 modifier = Modifier.fillMaxWidth(),

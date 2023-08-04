@@ -1,8 +1,40 @@
 <resources>
-    <string name="app_name">Time Machine</string>
-<!--    <string name="main_banner">ca-app-pub-1869740172940843/3006067904</string>-->
-<!--    <string name="main_banner">ca-app-pub-1869740172940843/8835666008</string>-->
-<!--    <string name="main_banner">ca-app-pub-1869740172940843/6375301421</string>-->
-<!--    <string name="main_banner">ca-app-pub-1869740172940843/1147897611</string>-->
-    <string name="main_banner">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="app_name" translatable="false">Time Machine</string>
+    <string name="main_banner1" translatable="false">ca-app-pub-1869740172940843/9810438965</string>
+    <string name="main_banner2" translatable="false">ca-app-pub-1869740172940843/8797574340</string>
+    <string name="main_banner3" translatable="false">ca-app-pub-1869740172940843/2615309377</string>
+    <string name="main_banner4" translatable="false">ca-app-pub-1869740172940843/1110656017</string>
+<!--    <string name="main_banner1" translatable="false">ca-app-pub-3940256099942544/6300978111</string>-->
+<!--    <string name="main_banner2" translatable="false">ca-app-pub-3940256099942544/6300978111</string>-->
+<!--    <string name="main_banner3" translatable="false">ca-app-pub-3940256099942544/6300978111</string>-->
+<!--    <string name="main_banner4" translatable="false">ca-app-pub-3940256099942544/6300978111</string>-->
+    <string name="Time_machine">Time Machine</string>
+    <string name="Light_theme">Light theme</string>
+    <string name="Dark_theme">Dark theme</string>
+    <string name="Auto_theme">Auto theme</string>
+    <string name="Days_in_a_month">Days in a month:</string>
+    <string name="By_default_days">By default, it is 30.42 days</string>
+    <string name="Days_in_a_year">Days in a year:</string>
+    <string name="By_default_days_in_year">By default, it is 365,25 days</string>
+    <string name="Choose_your_theme">Choose your theme</string>
+    <string name="NOW">NOW</string>
+    <string name="DIFFERENCE">DIFFERENCE</string>
+    <string name="Years">Years</string>
+    <string name="Months">Months</string>
+    <string name="Weeks">Weeks</string>
+    <string name="Days">Days</string>
+    <string name="Hours">Hours</string>
+    <string name="Minutes">Minutes</string>
+    <string name="hours">hours</string>
+    <string name="years">years</string>
+    <string name="months">months</string>
+    <string name="days">days</string>
+    <string name="minutes">minutes</string>
+    <string name="seconds">seconds</string>
+    <string name="TO">TO:</string>
+    <string name="FROM">FROM:</string>
+    <string name="Home">Home</string>
+    <string name="Time_difference">Time difference</string>
+    <string name="Add_or_sub_time">Add or sub time</string>
+    <string name="Settings">Settings</string>
 </resources>
