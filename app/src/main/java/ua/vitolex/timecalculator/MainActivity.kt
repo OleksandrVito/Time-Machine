@@ -17,12 +17,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.google.android.gms.ads.MobileAds
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import ua.vitolex.timecalculator.presentation.components.DrawerBody
@@ -55,6 +53,7 @@ class MainActivity : ComponentActivity() {
             val navController = rememberAnimatedNavController()
             val keyDays = stringPreferencesKey("days")
             val keyYears = stringPreferencesKey("years")
+            val keyTime = stringPreferencesKey("time")
 
             val theme = userSettings.themeStream.collectAsState()
             val useDarkColors = when (theme.value) {
@@ -71,6 +70,12 @@ class MainActivity : ComponentActivity() {
             val years =
                 this.dataStore.data.map {
                     it[keyYears]
+                }.collectAsState(initial = "")
+
+
+            val timeToEndTimer =
+                this.dataStore.data.map {
+                    it[keyTime]
                 }.collectAsState(initial = "")
 
 
@@ -104,19 +109,27 @@ class MainActivity : ComponentActivity() {
                             items = listOf(
                                 MenuItem(
                                     title = getString(R.string.Home),
-                                    route = Screens.MainScreen.rout
+                                    route = Screens.MainScreen.rout,
                                 ),
                                 MenuItem(
                                     title = getString(R.string.Time_difference),
-                                    route = Screens.TimeDifference.rout
+                                    route = Screens.TimeDifference.rout,
                                 ),
                                 MenuItem(
                                     title = getString(R.string.Add_or_sub_time),
-                                    route = Screens.AddOrSubTimeScreen.rout
+                                    route = Screens.AddOrSubTimeScreen.rout,
+                                ),
+                                MenuItem(
+                                    title = getString(R.string.Time_converter),
+                                    route = Screens.TimeConverter.rout,
+                                ),
+                                MenuItem(
+                                    title = getString(R.string.Days_timer),
+                                    route = Screens.DaysTimer.rout,
                                 ),
                                 MenuItem(
                                     title = getString(R.string.Settings),
-                                    route = Screens.SettingsScreen.rout
+                                    route = Screens.SettingsScreen.rout,
                                 ),
                             ),
                             navController = navController,
@@ -155,10 +168,13 @@ class MainActivity : ComponentActivity() {
                                 is DrawerEvents.OnItemClick -> {
                                     topBarTitle.value = event.title
                                 }
+
+                                else -> {}
                             }
                         },
                         selectedTheme = theme.value,
                         onItemSelected = { theme -> userSettings.theme = theme },
+                        timeToEndTimer = timeToEndTimer.value ?: ""
                     )
                 }
             }

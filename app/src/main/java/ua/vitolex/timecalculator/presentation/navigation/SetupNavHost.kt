@@ -6,6 +6,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.navigation.NavHostController
 //import androidx.navigation.compose.composable
 import com.google.accompanist.navigation.animation.AnimatedNavHost
@@ -19,6 +20,8 @@ sealed class Screens(val rout: String) {
     object MainScreen : Screens(rout = "main_screen")
     object AddOrSubTimeScreen : Screens(rout = "addOrSubTime_screen")
     object TimeDifference : Screens(rout = "timeDifference_screen")
+    object TimeConverter : Screens(rout = "timeConverter_screen")
+    object DaysTimer : Screens(rout = "daysTimer_screen")
     object SettingsScreen : Screens(rout = "settings_screen")
 }
 
@@ -31,6 +34,7 @@ fun SetupNavHost(
     onEvent: (DrawerEvents) -> Unit,
     selectedTheme: AppTheme,
     onItemSelected: (AppTheme) -> Unit,
+    timeToEndTimer: String,
 ) {
     AnimatedNavHost(navController = navController, startDestination = Screens.MainScreen.rout) {
         composable(route = Screens.SplashScreen.rout,
@@ -72,6 +76,34 @@ fun SetupNavHost(
                 selectedTheme = selectedTheme,
             )
         }
+
+        composable(route = Screens.TimeConverter.rout,
+            exitTransition = {
+                // Let's make for a really long fade in
+                fadeOut(animationSpec = tween(250))
+            }) {
+            TimeConverterScreen(
+                navController = navController,
+                settings = settings,
+                onEvent = onEvent,
+                selectedTheme = selectedTheme,
+            )
+        }
+
+        composable(route = Screens.DaysTimer.rout,
+            exitTransition = {
+                // Let's make for a really long fade in
+                fadeOut(animationSpec = tween(250))
+            }) {
+            DaysTimerScreen(
+                navController = navController,
+                settings = settings,
+                onEvent = onEvent,
+                selectedTheme = selectedTheme,
+                timeToEndTimer = timeToEndTimer
+            )
+        }
+
         composable(route = Screens.SettingsScreen.rout,
             exitTransition = {
                 // Let's make for a really long fade in

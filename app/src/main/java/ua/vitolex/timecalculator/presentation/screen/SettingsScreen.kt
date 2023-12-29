@@ -234,7 +234,10 @@ fun SettingsScreen(
                }
            }
         }
-        BannerAdView(id = stringResource(id = R.string.main_banner2))
+        Spacer(modifier = Modifier.height(10.dp))
+        Box(modifier = Modifier.heightIn(min = 60.dp), contentAlignment = Alignment.Center) {
+            BannerAdView(id = stringResource(id = R.string.main_banner2))
+        }
     }
 }
 

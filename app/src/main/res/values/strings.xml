@@ -4,10 +4,14 @@
     <string name="main_banner2" translatable="false">ca-app-pub-1869740172940843/8797574340</string>
     <string name="main_banner3" translatable="false">ca-app-pub-1869740172940843/2615309377</string>
     <string name="main_banner4" translatable="false">ca-app-pub-1869740172940843/1110656017</string>
+    <string name="main_banner5" translatable="false">ca-app-pub-1869740172940843/8549038857</string>
+    <string name="main_banner6" translatable="false">ca-app-pub-1869740172940843/8629710157</string>
 <!--    <string name="main_banner1" translatable="false">ca-app-pub-3940256099942544/6300978111</string>-->
 <!--    <string name="main_banner2" translatable="false">ca-app-pub-3940256099942544/6300978111</string>-->
 <!--    <string name="main_banner3" translatable="false">ca-app-pub-3940256099942544/6300978111</string>-->
 <!--    <string name="main_banner4" translatable="false">ca-app-pub-3940256099942544/6300978111</string>-->
+<!--    <string name="main_banner5" translatable="false">ca-app-pub-3940256099942544/6300978111</string>-->
+<!--    <string name="main_banner6" translatable="false">ca-app-pub-3940256099942544/6300978111</string>-->
     <string name="Time_machine">Time Machine</string>
     <string name="Light_theme">Light theme</string>
     <string name="Dark_theme">Dark theme</string>
@@ -19,12 +23,13 @@
     <string name="Choose_your_theme">Choose your theme</string>
     <string name="NOW">NOW</string>
     <string name="DIFFERENCE">DIFFERENCE</string>
-    <string name="Years">Years</string>
-    <string name="Months">Months</string>
-    <string name="Weeks">Weeks</string>
-    <string name="Days">Days</string>
-    <string name="Hours">Hours</string>
-    <string name="Minutes">Minutes</string>
+    <string name="EQUALS">EQUALS</string>
+    <string name="Years">years</string>
+    <string name="Months">months</string>
+    <string name="Weeks">weeks</string>
+    <string name="Days">days</string>
+    <string name="Hours">hours</string>
+    <string name="Minutes">minutes</string>
     <string name="hours">hours</string>
     <string name="years">years</string>
     <string name="months">months</string>
@@ -36,5 +41,9 @@
     <string name="Home">Home</string>
     <string name="Time_difference">Time difference</string>
     <string name="Add_or_sub_time">Add or sub time</string>
+    <string name="Time_converter">Time converter</string>
+    <string name="Days_timer">Days timer</string>
     <string name="Settings">Settings</string>
+    <string name="remaining">"Remaining "</string>
+    <string name="passed">"Passed "</string>
 </resources>

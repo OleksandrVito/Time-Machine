@@ -9,6 +9,7 @@ import androidx.compose.ui.unit.sp
 import ua.vitolex.timecalculator.R
 import ua.vitolex.timecalculator.scaledSp
 import ua.vitolex.timecalculator.ui.theme.GreyTextColor
+import ua.vitolex.timecalculator.ui.theme.exo
 
 @Composable
 fun AppBar(
@@ -17,7 +18,7 @@ fun AppBar(
 ) {
     TopAppBar(
         title = {
-            Text(text = title, fontSize = 22.scaledSp())
+            Text(text = title, fontSize = 22.scaledSp(), fontFamily = exo)
         },
         backgroundColor = MaterialTheme.colors.primary,
         contentColor = MaterialTheme.colors.onPrimary,

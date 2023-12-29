@@ -1,32 +1,25 @@
 package ua.vitolex.timecalculator.presentation.components
 
-import android.util.Log
-import androidx.activity.compose.BackHandler
-import androidx.compose.animation.core.tween
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ua.vitolex.timecalculator.circleShadow
-import ua.vitolex.timecalculator.presentation.navigation.Screens
 import ua.vitolex.timecalculator.scaledSp
+import ua.vitolex.timecalculator.ui.theme.exo
 import ua.vitolex.timecalculator.utils.DrawerEvents
 import java.text.SimpleDateFormat
 import java.util.*
@@ -84,7 +77,7 @@ fun DrawerHeader() {
                 secondaryColor = MaterialTheme.colors.onSurface
             )
         }
-        Text(text = "Time Machine", fontSize = 35.scaledSp())
+        Text(text = "Time Machine", fontSize = 35.scaledSp(), fontFamily = exo)
     }
 }
 
@@ -124,7 +117,7 @@ fun DrawerBody(
                     style = MaterialTheme.typography.body1,
                     fontSize = 22.scaledSp(),
                     modifier = Modifier
-                        .padding(vertical = 14.dp)
+                        .padding(vertical = 10.dp)
                         .padding(start = 40.dp)
                 )
             }

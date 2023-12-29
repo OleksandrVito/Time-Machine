@@ -265,7 +265,7 @@ fun TimeDifferenceScreen(
                         .clickable {
                             calendarFrom.set(year, month, dayOfMonth)
                             fromDate = LocalDate.of(year, month + 1, dayOfMonth)
-                            fromTime = LocalTime.of(hour, minute)
+                            fromTime = LocalTime.now()
                             fromDateTime = LocalDateTime.of(fromDate, fromTime)
                             getDifference(fromDateTime, toDateTime)
                         }
@@ -349,7 +349,7 @@ fun TimeDifferenceScreen(
                         .clickable {
                             calendarTo.set(year, month, dayOfMonth)
                             toDate = LocalDate.of(year, month + 1, dayOfMonth)
-                            toTime = LocalTime.of(hour, minute)
+                            toTime = LocalTime.now()
                             toDateTime = LocalDateTime.of(toDate, toTime)
                             getDifference(fromDateTime, toDateTime)
                         }
@@ -387,6 +387,9 @@ fun TimeDifferenceScreen(
                     }
                 } }
         }
-        BannerAdView(id = stringResource(id = R.string.main_banner3))
+        Spacer(modifier = Modifier.height(10.dp))
+        Box(modifier = Modifier.heightIn(min = 60.dp), contentAlignment = Alignment.Center) {
+            BannerAdView(id = stringResource(id = R.string.main_banner3))
+        }
     }
 }

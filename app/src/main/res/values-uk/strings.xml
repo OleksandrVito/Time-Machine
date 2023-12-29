@@ -11,12 +11,13 @@
     <string name="Choose_your_theme">Виберіть свою тему</string>
     <string name="NOW">ЗАРАЗ</string>
     <string name="DIFFERENCE">РІЗНИЦЯ</string>
-    <string name="Years">Роки</string>
-    <string name="Months">Місяці</string>
-    <string name="Weeks">Тижні</string>
-    <string name="Days">Дні</string>
-    <string name="Hours">Години</string>
-    <string name="Minutes">Хвилини</string>
+    <string name="EQUALS">ДОРІВНЮЄ</string>
+    <string name="Years">роки</string>
+    <string name="Months">місяці</string>
+    <string name="Weeks">тижні</string>
+    <string name="Days">дні</string>
+    <string name="Hours">години</string>
+    <string name="Minutes">хвилини</string>
     <string name="hours">годин</string>
     <string name="years">років</string>
     <string name="months">місяців</string>
@@ -28,5 +29,9 @@
     <string name="Home">Домашня</string>
     <string name="Time_difference">Різниця у часі</string>
     <string name="Add_or_sub_time">Додати або відняти час</string>
+    <string name="Time_converter">Перетворювач часу</string>
+    <string name="Days_timer">Таймер днів</string>
     <string name="Settings">Налаштування</string>
+    <string name="remaining">Залишилось </string>
+    <string name="passed">"Минуло "</string>
 </resources>

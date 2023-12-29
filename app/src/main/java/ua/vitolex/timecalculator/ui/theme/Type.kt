@@ -15,10 +15,36 @@ val campton = FontFamily(
     ),
 )
 
+val exo = FontFamily(
+    Font(
+        R.font.exo2_light,
+        weight = FontWeight.Light
+    ),
+    Font(
+        R.font.exo2_medium,
+        weight = FontWeight.Medium
+    ),
+    Font(
+        R.font.exo2_regular,
+        weight = FontWeight.Normal
+    ),
+)
+val cairo = FontFamily(
+    Font(
+        R.font.cairo_medium,
+        weight = FontWeight.Medium
+    ),
+    Font(
+        R.font.cairo_bold,
+        weight = FontWeight.Bold
+    ),
+
+    )
+
 // Set of Material typography styles to start with
 val Typography = Typography(
     body1 = TextStyle(
-        fontFamily = campton,
+        fontFamily = exo,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         color = GreyTextColor

@@ -25,10 +25,12 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import ua.vitolex.timecalculator.scaledSp
 import ua.vitolex.timecalculator.shadow
 import ua.vitolex.timecalculator.shadowAround
@@ -36,6 +38,9 @@ import ua.vitolex.timecalculator.ui.theme.GreyTextColor
 import ua.vitolex.timecalculator.ui.theme.LightBackground
 import ua.vitolex.timecalculator.ui.theme.LightShadow1
 import ua.vitolex.timecalculator.ui.theme.LightShadow2
+import ua.vitolex.timecalculator.ui.theme.cairo
+import ua.vitolex.timecalculator.ui.theme.campton
+import ua.vitolex.timecalculator.ui.theme.exo
 
 @Composable
 fun CustomInput(
@@ -77,17 +82,25 @@ fun CustomInput(
             contentAlignment = Alignment.Center
         ) {
             BasicTextField(
-                value = if (value !== "0") value else "", onValueChange = onValueChange,
+                value =
+                if (value.isNotEmpty() && value.substring(0, 1) == "0") {
+                    if (value.length > 1 && value.substring(1, 2) == ".") value
+                    else if(value.length > 1 && value.substring(1, 2) !== "0") value.drop(1)
+                    else value
+                } else value,
+                onValueChange = onValueChange,
                 cursorBrush = Brush.radialGradient(
                     listOf(
                         GreyTextColor,
                         GreyTextColor
                     )
                 ),
+                maxLines = 1,
                 textStyle = MaterialTheme.typography.body1.copy(
                     fontSize = 17.scaledSp(),
                     color = GreyTextColor,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    fontFamily = cairo
                 ),
                 modifier = Modifier
                     .shadowAround(
@@ -104,7 +117,7 @@ fun CustomInput(
                         if (focusState.isFocused) focus = true else focus = false
                     },
                 keyboardOptions = keyboardOptions ?: KeyboardOptions(
-                    keyboardType = KeyboardType.Text,
+                    keyboardType = KeyboardType.NumberPassword,
                     autoCorrect = true,
                 ),
                 keyboardActions = keyboardActions ?: KeyboardActions(
@@ -112,11 +125,16 @@ fun CustomInput(
                 ),
                 decorationBox = { innerTextField ->
                     Box() {
-                        if (value.isEmpty() && focus == false) {
+                        if (
+//                            value == "0" ||
+                            value.isEmpty() && !focus) {
                             Text(
                                 text = "0", color = GreyTextColor.copy(0.5f),
                                 modifier = Modifier.fillMaxWidth(),
-                                textAlign = TextAlign.Center
+                                textAlign = TextAlign.Center,
+                                fontSize = 18.scaledSp(),
+                                fontFamily = cairo,
+                                fontWeight = FontWeight.Normal
                             )
                         }
                         innerTextField()

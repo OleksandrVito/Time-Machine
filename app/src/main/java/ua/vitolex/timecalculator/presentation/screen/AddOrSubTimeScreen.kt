@@ -307,7 +307,7 @@ fun AddOrSubTimeScreen(
                         .clickable {
                             calendarFrom.set(year, month, dayOfMonth)
                             fromDate = LocalDate.of(year, month + 1, dayOfMonth)
-                            fromTime = LocalTime.of(hour, minute)
+                            fromTime = LocalTime.now()
                             fromDateTime = LocalDateTime.of(fromDate, fromTime)
                             getDifference(
                                 fromDateTime,
@@ -322,7 +322,11 @@ fun AddOrSubTimeScreen(
                         .padding(vertical = 18.dp, horizontal = 8.dp),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text(text = stringResource(R.string.NOW), fontSize = 16.scaledSp(), color = GreyTextColor)
+                        Text(
+                            text = stringResource(R.string.NOW),
+                            fontSize = 16.scaledSp(),
+                            color = GreyTextColor
+                        )
                     }
                 }
             }
@@ -430,22 +434,35 @@ fun AddOrSubTimeScreen(
                 ) {
                     Column() {
                         Box(
-                            modifier = Modifier.height(120.dp),
+                            modifier = Modifier.height(100.dp),
                             contentAlignment = Alignment.TopCenter
                         ) {
 
                             Box(
-                                modifier = Modifier.height(110.dp),
+                                modifier = Modifier.height(100.dp),
                                 contentAlignment = Alignment.BottomCenter
                             ) {
                                 CustomInput(
                                     value = yearsInputValue,
                                     onValueChange = {
                                         try {
-                                            it.toDouble()
-                                            if (it.length < 4) {
-                                                yearsInputValue = it
+                                            if (!it.endsWith(" ")) {
+                                                it.toDouble()
+                                                if (it.length < 4) {
+                                                    yearsInputValue = it
+                                                }
+                                                getDifference(
+                                                    fromDateTime,
+                                                    yearsInputValue,
+                                                    monthsInputValue,
+                                                    weeksInputValue,
+                                                    daysInputValue,
+                                                    hoursInputValue,
+                                                    minutesInputValue,
+                                                )
                                             }
+                                        } catch (e: NumberFormatException) {
+                                            if (it.length == 0) yearsInputValue = ""
                                             getDifference(
                                                 fromDateTime,
                                                 yearsInputValue,
@@ -454,19 +471,6 @@ fun AddOrSubTimeScreen(
                                                 daysInputValue,
                                                 hoursInputValue,
                                                 minutesInputValue,
-                                            )
-                                        } catch (e: NumberFormatException) {
-                                            if (it.length < 4) {
-                                                yearsInputValue = it
-                                            }
-                                            getDifference(
-                                                fromDateTime,
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
                                             )
                                         }
                                     },
@@ -485,26 +489,40 @@ fun AddOrSubTimeScreen(
                                     ),
                                 )
                             }
-                            Text(text = stringResource(R.string.Years), fontSize = 20.scaledSp())
+                            Text(text = stringResource(R.string.Years), fontSize = 14.scaledSp(),
+                                letterSpacing = 2.scaledSp())
 
                         }
                         Box(
-                            modifier = Modifier.height(120.dp),
+                            modifier = Modifier.height(100.dp),
                             contentAlignment = Alignment.TopCenter
                         ) {
 
                             Box(
-                                modifier = Modifier.height(110.dp),
+                                modifier = Modifier.height(100.dp),
                                 contentAlignment = Alignment.BottomCenter
                             ) {
                                 CustomInput(
                                     value = monthsInputValue,
                                     onValueChange = {
                                         try {
-                                            it.toDouble()
-                                            if (it.length < 5) {
-                                                monthsInputValue = it
+                                            if (!it.endsWith(" ")) {
+                                                it.toDouble()
+                                                if (it.length < 5) {
+                                                    monthsInputValue = it
+                                                }
+                                                getDifference(
+                                                    fromDateTime,
+                                                    yearsInputValue,
+                                                    monthsInputValue,
+                                                    weeksInputValue,
+                                                    daysInputValue,
+                                                    hoursInputValue,
+                                                    minutesInputValue,
+                                                )
                                             }
+                                        } catch (e: NumberFormatException) {
+                                            if (it.length == 0) monthsInputValue = ""
                                             getDifference(
                                                 fromDateTime,
                                                 yearsInputValue,
@@ -513,19 +531,6 @@ fun AddOrSubTimeScreen(
                                                 daysInputValue,
                                                 hoursInputValue,
                                                 minutesInputValue,
-                                            )
-                                        } catch (e: NumberFormatException) {
-                                            if (it.length < 5) {
-                                                monthsInputValue = it
-                                            }
-                                            getDifference(
-                                                fromDateTime,
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
                                             )
                                         }
                                     },
@@ -544,25 +549,39 @@ fun AddOrSubTimeScreen(
                                     ),
                                 )
                             }
-                            Text(text = stringResource(R.string.Months), fontSize = 20.scaledSp())
+                            Text(text = stringResource(R.string.Months), fontSize = 14.scaledSp(),
+                                letterSpacing = 2.scaledSp())
                         }
                         Box(
-                            modifier = Modifier.height(120.dp),
+                            modifier = Modifier.height(100.dp),
                             contentAlignment = Alignment.TopCenter
                         ) {
 
                             Box(
-                                modifier = Modifier.height(110.dp),
+                                modifier = Modifier.height(100.dp),
                                 contentAlignment = Alignment.BottomCenter
                             ) {
                                 CustomInput(
                                     value = weeksInputValue,
                                     onValueChange = {
                                         try {
-                                            it.toDouble()
-                                            if (it.length < 5) {
-                                                weeksInputValue = it
+                                            if (!it.endsWith(" ")) {
+                                                it.toDouble()
+                                                if (it.length < 5) {
+                                                    weeksInputValue = it
+                                                }
+                                                getDifference(
+                                                    fromDateTime,
+                                                    yearsInputValue,
+                                                    monthsInputValue,
+                                                    weeksInputValue,
+                                                    daysInputValue,
+                                                    hoursInputValue,
+                                                    minutesInputValue,
+                                                )
                                             }
+                                        } catch (e: NumberFormatException) {
+                                            if (it.length == 0) weeksInputValue = ""
                                             getDifference(
                                                 fromDateTime,
                                                 yearsInputValue,
@@ -571,19 +590,6 @@ fun AddOrSubTimeScreen(
                                                 daysInputValue,
                                                 hoursInputValue,
                                                 minutesInputValue,
-                                            )
-                                        } catch (e: NumberFormatException) {
-                                            if (it.length < 5) {
-                                                weeksInputValue = it
-                                            }
-                                            getDifference(
-                                                fromDateTime,
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
                                             )
                                         }
                                     },
@@ -602,28 +608,42 @@ fun AddOrSubTimeScreen(
                                     ),
                                 )
                             }
-                            Text(text = stringResource(R.string.Weeks), fontSize = 20.scaledSp())
+                            Text(text = stringResource(R.string.Weeks), fontSize = 14.scaledSp(),
+                                letterSpacing = 2.scaledSp())
                         }
                     }
                     Spacer(modifier = Modifier.width(10.dp))
                     Column() {
                         Box(
-                            modifier = Modifier.height(120.dp),
+                            modifier = Modifier.height(100.dp),
                             contentAlignment = Alignment.TopCenter
                         ) {
 
                             Box(
-                                modifier = Modifier.height(110.dp),
+                                modifier = Modifier.height(100.dp),
                                 contentAlignment = Alignment.BottomCenter
                             ) {
                                 CustomInput(
                                     value = daysInputValue,
                                     onValueChange = {
                                         try {
-                                            it.toDouble()
-                                            if (it.length < 7) {
-                                                daysInputValue = it
+                                            if (!it.endsWith(" ")) {
+                                                it.toDouble()
+                                                if (it.length < 6) {
+                                                    daysInputValue = it
+                                                }
+                                                getDifference(
+                                                    fromDateTime,
+                                                    yearsInputValue,
+                                                    monthsInputValue,
+                                                    weeksInputValue,
+                                                    daysInputValue,
+                                                    hoursInputValue,
+                                                    minutesInputValue,
+                                                )
                                             }
+                                        } catch (e: NumberFormatException) {
+                                            if (it.length == 0) daysInputValue = ""
                                             getDifference(
                                                 fromDateTime,
                                                 yearsInputValue,
@@ -632,19 +652,6 @@ fun AddOrSubTimeScreen(
                                                 daysInputValue,
                                                 hoursInputValue,
                                                 minutesInputValue,
-                                            )
-                                        } catch (e: NumberFormatException) {
-                                            if (it.length < 7) {
-                                                daysInputValue = it
-                                            }
-                                            getDifference(
-                                                fromDateTime,
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
                                             )
                                         }
                                     },
@@ -663,25 +670,39 @@ fun AddOrSubTimeScreen(
                                     ),
                                 )
                             }
-                            Text(text = stringResource(R.string.Days), fontSize = 20.scaledSp())
+                            Text(text = stringResource(R.string.Days), fontSize = 14.scaledSp(),
+                                letterSpacing = 2.scaledSp())
                         }
                         Box(
-                            modifier = Modifier.height(120.dp),
+                            modifier = Modifier.height(100.dp),
                             contentAlignment = Alignment.TopCenter
                         ) {
 
                             Box(
-                                modifier = Modifier.height(110.dp),
+                                modifier = Modifier.height(100.dp),
                                 contentAlignment = Alignment.BottomCenter
                             ) {
                                 CustomInput(
                                     value = hoursInputValue,
                                     onValueChange = {
                                         try {
-                                            it.toDouble()
-                                            if (it.length < 7) {
-                                                hoursInputValue = it
+                                            if (!it.endsWith(" ")) {
+                                                it.toDouble()
+                                                if (it.length < 6) {
+                                                    hoursInputValue = it
+                                                }
+                                                getDifference(
+                                                    fromDateTime,
+                                                    yearsInputValue,
+                                                    monthsInputValue,
+                                                    weeksInputValue,
+                                                    daysInputValue,
+                                                    hoursInputValue,
+                                                    minutesInputValue,
+                                                )
                                             }
+                                        } catch (e: NumberFormatException) {
+                                            if (it.length == 0) hoursInputValue = ""
                                             getDifference(
                                                 fromDateTime,
                                                 yearsInputValue,
@@ -690,19 +711,6 @@ fun AddOrSubTimeScreen(
                                                 daysInputValue,
                                                 hoursInputValue,
                                                 minutesInputValue,
-                                            )
-                                        } catch (e: NumberFormatException) {
-                                            if (it.length < 7) {
-                                                hoursInputValue = it
-                                            }
-                                            getDifference(
-                                                fromDateTime,
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
                                             )
                                         }
                                     },
@@ -721,25 +729,39 @@ fun AddOrSubTimeScreen(
                                     ),
                                 )
                             }
-                            Text(text = stringResource(R.string.Hours), fontSize = 20.scaledSp())
+                            Text(text = stringResource(R.string.Hours), fontSize = 14.scaledSp(),
+                                letterSpacing = 2.scaledSp())
                         }
                         Box(
-                            modifier = Modifier.height(120.dp),
+                            modifier = Modifier.height(100.dp),
                             contentAlignment = Alignment.TopCenter
                         ) {
 
                             Box(
-                                modifier = Modifier.height(110.dp),
+                                modifier = Modifier.height(100.dp),
                                 contentAlignment = Alignment.BottomCenter
                             ) {
                                 CustomInput(
                                     value = minutesInputValue,
                                     onValueChange = {
                                         try {
-                                            it.toDouble()
-                                            if (it.length < 7) {
-                                                minutesInputValue = it
+                                            if (!it.endsWith(" ")) {
+                                                it.toDouble()
+                                                if (it.length < 6) {
+                                                    minutesInputValue = it
+                                                }
+                                                getDifference(
+                                                    fromDateTime,
+                                                    yearsInputValue,
+                                                    monthsInputValue,
+                                                    weeksInputValue,
+                                                    daysInputValue,
+                                                    hoursInputValue,
+                                                    minutesInputValue,
+                                                )
                                             }
+                                        } catch (e: NumberFormatException) {
+                                            if (it.length == 0) minutesInputValue = ""
                                             getDifference(
                                                 fromDateTime,
                                                 yearsInputValue,
@@ -748,19 +770,6 @@ fun AddOrSubTimeScreen(
                                                 daysInputValue,
                                                 hoursInputValue,
                                                 minutesInputValue,
-                                            )
-                                        } catch (e: NumberFormatException) {
-                                            if (it.length < 7) {
-                                                minutesInputValue = it
-                                            }
-                                            getDifference(
-                                                fromDateTime,
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
-                                                "0",
                                             )
                                         }
                                     },
@@ -779,7 +788,8 @@ fun AddOrSubTimeScreen(
                                     ),
                                 )
                             }
-                            Text(text = stringResource(R.string.Minutes), fontSize = 20.scaledSp())
+                            Text(text = stringResource(R.string.Minutes), fontSize = 14.scaledSp(),
+                                letterSpacing = 2.scaledSp())
                         }
                     }
                 }
@@ -789,7 +799,7 @@ fun AddOrSubTimeScreen(
                 Spacer(modifier = Modifier.height(10.dp))
                 Text(
                     text = andDateTime.format(formatDate),
-                    fontSize = 24.scaledSp(),
+                    fontSize = 20.scaledSp(),
                     modifier = Modifier
                         .fillMaxWidth(),
                     textAlign = TextAlign.Center,
@@ -797,7 +807,10 @@ fun AddOrSubTimeScreen(
                 )
             }
         }
-        BannerAdView(id = stringResource(id = R.string.main_banner4))
+        Spacer(modifier = Modifier.height(10.dp))
+        Box(modifier = Modifier.heightIn(min = 60.dp), contentAlignment = Alignment.Center) {
+            BannerAdView(id = stringResource(id = R.string.main_banner4))
+        }
     }
 }
 
